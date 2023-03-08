@@ -10,9 +10,9 @@ package com.rhd.test.threadobjectclasscommonmethods.线程安全;
  * @Version 1.0
  */
 public class MultiThreadsError implements Runnable{
-
+    static MultiThreadsError multiThreadsError = new MultiThreadsError();
     public static void main(String[] args) throws InterruptedException{
-        MultiThreadsError multiThreadsError = new MultiThreadsError();
+
         Thread thread1 = new Thread(multiThreadsError);
         Thread thread2 = new Thread(multiThreadsError);
         thread1.start();
@@ -22,7 +22,7 @@ public class MultiThreadsError implements Runnable{
         System.out.println("表面上结果是： " + multiThreadsError.index);
     }
 
-    static int index = 0;
+    int index = 0;
     @Override
     public void run() {
         for (int i = 0; i < 10000; i++){
